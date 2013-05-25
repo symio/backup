@@ -8,7 +8,7 @@ cat fileSourcesList | sort -u >> fileSourcesListNew
 mv fileSourcesListNew fileSourcesList
 
 xgettext -f fileSourcesList -o backup.pot -j -F -n \
-    --from-code=UTF-8 -d backup \
+    --from-code="$codeName" -d backup \
     --copyright-holder=loamok.org \
     --package-name="Loamok Backup : https://loamok.org/projects/backup" \
     --package-version=0.1_beta_1 \
@@ -20,3 +20,18 @@ sed -i 's/^\"POT-Creation-Date: \(.*\)\\n\"$/\"POT-Creation-Date: 2013-05-25 11:
 sed -i 's/^\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"/\"Last-Translator: '"$translator"'\\n\"/' backup.pot
 sed -i 's/\"Language-Team: LANGUAGE <LL@li.org>\\n\"/\"Language-Team: NONE\\n\"/' backup.pot
 sed -i 's/\"Language: \\n\"/\"Language: FRENCH\\n\"/' backup.pot
+
+for lang in "${langs[@]}"
+do
+    baseDirname="${lang}.${codeCode}"
+    if [ -f $baseDirname/LC_MESSAGES/default.po ]
+    then
+        msgmerge -U $baseDirname/LC_MESSAGES/default.po -i backup.pot
+    else
+        msginit -l $lang -o $baseDirname/LC_MESSAGES/default.po -i backup.pot
+    fi
+done
+
+echo "Traduisez les fichiers de langues et lancez le script 'compileLangs'."
+echo "Make translation in language files, then run the script 'compileLangs'."
+exit 0

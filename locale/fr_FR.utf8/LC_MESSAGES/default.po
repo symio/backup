@@ -1,0 +1,28 @@
+# Loamok Backup.
+# Systèmes de sauvegardes pour serveurs dédiés.
+# Copyright (C) 2013 Loamok.org
+# This file is distributed under the same license as the Loamok backup package.
+# HUBY FRANCK <franck.huby@loamok.org>, 2013.
+#
+msgid   ""
+msgstr  "Project-Id-Version: Loamok Backup : https://loamok.org/projects/"
+        "backup 0.1_beta_1\n"
+        "Report-Msgid-Bugs-To: https://loamok.org/projects/backup\n"
+        "POT-Creation-Date: 2013-05-25 11:10+0200\n"
+        "PO-Revision-Date: 2013-05-25 14:09+0200\n"
+        "Last-Translator: Huby Franck <franck.huby@loamok.org>\n"
+        "Language-Team: French\n"
+        "Language: fr\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "POT-Revision-Date: 2013-05-25 14:09+0200\n"
+        "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../public/index.php:16
+msgid   "Systèmes de sauvegardes pour serveurs dédiés."
+msgstr  "Systèmes de sauvegardes pour serveurs dédiés."
+
+#: ../public/index.php:17
+msgid   "Loamok Backup"
+msgstr  "Loamok Backup"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. config.conf
+
+for lang in "${langs[@]}"
+do
+    baseDirname="${lang}.${codeCode}"
+    msgfmt -c -v -o $baseDirname/LC_MESSAGES/default.mo $baseDirname/LC_MESSAGES/default.po
+done
