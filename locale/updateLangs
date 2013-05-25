@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. config.conf
+
+
+grep -r '_(' ../* | cut -d ':' -f 1  | grep '../' | grep '.php' | sort -u >> ./fileSourcesList
+cat fileSourcesList | sort -u >> fileSourcesListNew
+mv fileSourcesListNew fileSourcesList
+
+xgettext -f fileSourcesList -o backup.pot -j -F -n \
+    --from-code=UTF-8 -d backup \
+    --copyright-holder=loamok.org \
+    --package-name="Loamok Backup : https://loamok.org/projects/backup" \
+    --package-version=0.1_beta_1 \
+    --msgid-bugs-address=https://loamok.org/projects/backup \
+    --foreign-user 
+
+patch -p0 backup.pot < potBase.patch
+sed -i 's/^\"POT-Creation-Date: \(.*\)\\n\"$/\"POT-Creation-Date: 2013-05-25 11:10+0200\\n\"\n\"POT-Revision-Date: \1\\n\"/' backup.pot
+sed -i 's/^\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"/\"Last-Translator: '"$translator"'\\n\"/' backup.pot
+sed -i 's/\"Language-Team: LANGUAGE <LL@li.org>\\n\"/\"Language-Team: NONE\\n\"/' backup.pot
+sed -i 's/\"Language: \\n\"/\"Language: FRENCH\\n\"/' backup.pot
